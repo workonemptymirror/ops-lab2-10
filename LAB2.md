@@ -1,4 +1,4 @@
-# 实验 2 记录：第 <组号> 组
+# 实验 2 记录：第 10组
 
 评分时依据本文件和 `runs/` 中的原始数据核对。本文件中的每一个数值，都须能在某个 `runs/<名字>/` 的文件中找到：表格用 `scripts/table.sh` 生成后粘贴，其他数值注明出处（例如“`runs/r1-pool4/red.csv` 第 6 阶段”）。不要只贴截图。将 `<填写>` 替换为本组的内容。
 
@@ -8,56 +8,83 @@
 
 | 项 | 内容 |
 |---|---|
-| 小组 | 第 <组号> 组 |
-| 仓库地址 | <https://github.com/…> |
-| 主机 | <云厂商与规格名，例如某云的 2 vCPU 4 GB 通用型；或学校的虚拟机> |
-| CPU | <`lscpu` 的 Model name；vCPU 数；`lscpu -e` 里每个 CPU 对应的 CORE> |
-| 内存 | <`free -m` 的 total> |
-| 数据目录所在的盘 | <`findmnt -T data` 的 SOURCE 和 FSTYPE；磁盘类型，如“通用型 SSD 云盘 40 GB”> |
-| 操作系统与内核 | <`/etc/os-release` 的 PRETTY_NAME；`uname -r`> |
-| Go、Prometheus、node_exporter | <`go version`；`tools/prometheus --version` 第一行；`tools/node_exporter --version` 第一行> |
-| 分核 | enrolld：<如 1>；loadgen、Prometheus、node_exporter：<如 0> |
+| 小组 | 第 10 组 |
+| 仓库地址 | https://github.com/workonemptymirror/ops-lab2-10.git|
+| 主机 | 华为云的 2 vCPU 4 GB 通用型|
+| CPU | Model name：General Purpose Processor；vCPU 数：2；lscpu -e 中 CPU 0、1 对应的 CORE 均为 0 |
+| 内存 | free -m 的 total：3741 MB |
+| 数据目录所在的盘 | findmnt -T data：SOURCE=/dev/vda2，FSTYPE=ext4，挂载点=/；通用型 SSD 云盘 40 GB>|
+| 操作系统与内核 | PRETTY_NAME：Huawei Cloud EulerOS 3.0 (x86_64)；uname -r：6.6.0-72.0.0.76.r1361_99.hce3.x86_64 |
+| Go、Prometheus、node_exporter |Go：go1.26.9 linux/amd64；Prometheus：prometheus, version 3.13.4；node_exporter：node_exporter, version 1.12.1 |
+| 分核 | enrolld：1；loadgen、Prometheus、node_exporter：0|
 
 ## 2. 任务 0：基线
 
 `bin/enrolld -bench-fsync 2000` 连续运行三次的输出：
 
 ```text
-<粘贴三次的输出>
+fsync 次数 2000，总耗时 3.07 s，数据目录 data
+fsync 耗时（毫秒）：mean 1.532  p50 1.359  p90 1.958  p99 4.365  max 15.087
+按平均值推算，一个写者串行 fsync 每秒最多约 653 次（= 1000 / 1.532）
+fsync 次数 2000，总耗时 2.91 s，数据目录 data
+fsync 耗时（毫秒）：mean 1.449  p50 1.309  p90 1.748  p99 4.309  max 9.509
+按平均值推算，一个写者串行 fsync 每秒最多约 690 次（= 1000 / 1.449）
+fsync 次数 2000，总耗时 2.80 s，数据目录 data
+fsync 耗时（毫秒）：mean 1.393  p50 1.286  p90 1.598  p99 3.593  max 11.239
+按平均值推算，一个写者串行 fsync 每秒最多约 718 次（= 1000 / 1.393）
 ```
 
-按平均值计算，单个写者串行 fsync 每秒最多约 <填写> 次。三次之间相差多少？<填写>
+按平均值计算，单个写者串行 fsync 每秒最多约 686 次。三次之间相差多少？推算上限在 653～718 次/秒之间，极差 65 次/秒，约 9.5%；平均 fsync 耗时在 1.393～1.532 ms 之间，相差约 0.14 ms。 以均值 686 为基准，单次波动约 ±5%
 
 空载和运行 fsync 测试时各工具的读数（各观察 5 秒以上，填写典型值）：
 
 | 工具与列 | 空载 | 运行 `-bench-fsync` 时 | 该列的含义 |
 |---|---|---|---|
-| `vmstat -w 1`：r、b | <填写> | <填写> | <填写> |
-| `vmstat -w 1`：us、sy、id、wa、st | <填写> | <填写> | <填写> |
-| `iostat -dx 1 <盘>`：w/s、wkB/s | <填写> | <填写> | <填写> |
-| `iostat -dx 1 <盘>`：w_await、f/s、f_await | <填写> | <填写> | <填写> |
-| `iostat -dx 1 <盘>`：aqu-sz、%util | <填写> | <填写> | <填写> |
+| `vmstat -w 1`：r、b | r=0, b=0| r=0~2, b=1| r：可运行队列长度；b：不可中断睡眠（阻塞）进程数 |
+| `vmstat -w 1`：us、sy、id、wa、st |us=0, sy=0~1
+id=99~100, wa=0, st=0 | us=0~1, sy=2~3
+id=47~58, wa=38~48, st=0 | us：用户态 CPU 时间；sy：内核态；id：空闲；wa：等 I/O；st：被虚拟化层偷走的时间 |
+| `iostat -dx 1 <盘>`：w/s、wkB/s | w/s=0~12
+wkB/s=0~80 | w/s≈1976~2227
+wkB/s≈10728~12020| w/s：每秒写次数；wkB/s：每秒写 KB 数 |
+| `iostat -dx 1 <盘>`：w_await、f/s、f_await | w_await=0.5~1.5
+f/s=0~2, f_await=0 | w_await≈0.49
+f/s≈1308~1474, f_await≈0.04 | w_await：写请求平均等待时间(ms)；f/s：每秒 fsync 次数；f_await：fsync 平均等待时间(ms) |
+| `iostat -dx 1 <盘>`：aqu-sz、%util | aqu-sz=0~0.01
+%util=0~0.3 | aqu-sz≈1.02~1.04
+%util≈94.80~97.40 | aqu-sz：平均请求队列长度；%util：设备利用率百分比 |
 
-运行 fsync 测试时，CPU 是否繁忙？哪几列表明存在等待？<填写>
+运行 fsync 测试时，CPU 是否繁忙？哪几列表明存在等待？运行 fsync 测试时 CPU 并不繁忙。从 vmstat 可以看出，用户态 us 仅为 0~1，内核态 sy 仅为 2~3，系统仍有 47%~58% 的 CPU 处于空闲状态（id）。表明存在等待的列有：
+
+vmstat 的 wa（I/O 等待） 从 0 飙升至 38~48，说明有大量 CPU 时间在等待磁盘操作完成；同时 b（阻塞进程数） 出现了 1，说明有进程因为等待 I/O 而进入不可中断睡眠。
+
+iostat 的 %util（设备利用率） 从接近 0 飙升至 94.8%~97.4%，说明磁盘在测试期间几乎一直处于满负荷工作状态。w/s 和 f/s 的大幅上升也证实了瞬间产生了大量的底层写和 fsync 操作。
 
 ## 3. 任务 1：指标流水线
 
-两个抓取目标的状态（`curl -s 127.0.0.1:9090/api/v1/targets` 中两处 `"health"` 的值）：<填写>
+两个抓取目标的状态（`curl -s 127.0.0.1:9090/api/v1/targets` 中两处 `"health"` 的值）：`up`、`up`
 
 本组编写的四条查询（与 `deploy/queries-red.txt` 一致）：
 
 ```text
-server_rps          <填写>
-server_error_rate   <填写>
-server_p99_ms       <填写>
-server_slo_good     <填写>
+server_rps          sum(rate(http_requests_total{route="${route}"}[${window}]))
+server_error_rate   (sum(rate(http_requests_total{route="${route}",code=~"5.."}[${window}])) or vector(0)) / sum(rate(http_requests_total{route="${route}"}[${window}]))
+server_p99_ms       histogram_quantile(0.99, sum by (le) (rate(http_request_duration_seconds_bucket{route="${route}"}[${window}]))) * 1000
+server_slo_good     sum(rate(http_request_duration_seconds_bucket{route="${route}",code="200",le="${slo}"}[${window}])) / sum(rate(http_requests_total{route="${route}"}[${window}]))
 ```
 
 `runs/t1-light` 的数据（`scripts/table.sh runs/t1-light ok_rps mean_ms p99_ms server_rps server_mean_ms server_p99_ms cpu_ms_per_req db_query_mean_ms`）：
 
-<粘贴表格>
+| step | target_rps | ok_rps | mean_ms | p99_ms | server_rps | server_mean_ms | server_p99_ms | cpu_ms_per_req | db_query_mean_ms |
+|---|---|---|---|---|---|---|---|---|---|
+| 1 | 0 | 0.0 | - | - | 0 | NaN | NaN | +Inf | NaN |
+| 2 | 50 | 50.5 | 11.32 | 12.47 | 51.2917 | 10.6728 | 19.9 | 0.44543 | 10.2707 |
+| 3 | 100 | 97.8 | 11.48 | 14.11 | 95.875 | 10.8291 | 19.9043 | 0.435219 | 10.3889 |
+| all | - | 74.2 | 11.43 | 13.62 | - | - | - | - | - |
 
-从这次实验读出：每次查询实际占用连接 <填写> ms（`db_query_mean_ms`）；每个请求消耗的 CPU <填写> ms（`cpu_ms_per_req`，取 100 请求/秒的阶段）。
+从这次实验读出：每次查询实际占用连接 **10.3889** ms（`db_query_mean_ms`，`runs/t1-light/red.csv` 第 3 行，即到达率 100 请求/秒的阶段）；每个请求消耗的 CPU **0.435219** ms（`cpu_ms_per_req`，取 100 请求/秒的阶段）。
+
+第 1 行是到达率 0 的空载基线，`cpu_ms_per_req` 为 0/0 的 `+Inf`、`db_query_mean_ms` 为 `NaN`，不作为取数依据。
 
 ## 4. 任务 2：读路径
 
@@ -159,7 +186,27 @@ W2 的到达率：<填写>
 
 **问题 4：延迟数值的测量位置与方法。** 同一阶段中，客户端与服务端的平均值、p99 各相差多少？列出只计入客户端的时间组成。找出一个服务端 p99 大于客户端 p99 的阶段，并解释原因（L-08 第 10 页）。比较服务端的 `server_slo_good` 与客户端的 `slo_good`；若存在过载阶段，二者为何相差很大？SLI 应在何处测量（L-08 第 19 页）？用 R1 的 `steps.csv`，将各阶段的 p99 求平均，与 `all` 行的 p99 比较，说明百分位数为什么不能平均，以及正确的合并方法。最后计算错误预算：SLO 为“30 天内 99% 的读请求在 50 ms 内成功返回”，若 R1 中第一个不达标阶段的负载持续下去，燃烧率是多少，30 天的预算多久耗尽（L-08 第 21 页）？
 
-<填写>
+**数据。** `runs/t1-light/steps.csv`（客户端，loadgen 测量）与 `runs/t1-light/red.csv`、`runs/t1-light/use.csv`（服务端与资源层，Prometheus + `node_exporter`），第 2、3 行；对应阶段目标到达率 50 与 100 请求/秒，每阶段 30 秒，共 2935 个成功请求，错误率 0，`warn` 列为空。`runs/t1-light/meta.txt` 记录 `promsteps` 变量 `route=/api/courses/{id}`、`slo=0.05`、`cpus=1`、`disk=vda`。
+
+**同一阶段中，客户端与服务端的平均值、p99 各相差多少。** 100 请求/秒阶段：客户端 `mean_ms`=11.48、`server_mean_ms`=10.8291，客户端高 0.6509 ms（约 6.0%）；客户端 `p99_ms`=14.11、`server_p99_ms`=19.9043，**服务端反而高 5.7943 ms**。50 请求/秒阶段同向：平均值 11.32 对 10.6728（客户端高 0.6472 ms），p99 12.47 对 19.9（服务端高 7.43 ms）。
+
+**只计入客户端的时间组成。** 客户端从**计划发送时刻**开始计时，到**读完响应体**为止，因此比服务端多算了：(1) loadgen 自身的发送滞后（本组 `lag_p99_ms`=1.04 ms）；(2) 请求经回环地址在操作系统网络栈上的传输；(3) 请求进入处理函数之前在 Go 运行时中等待可用处理线程的时间（可参照服务端 `sched_wait_p99_ms`≈0.489 ms，这部分时间客户端计入、服务端不计入）；(4) 读取响应体的时间。服务端从进入处理函数开始、到处理函数返回结束，**不含**内核排队、网络传输和运行时等待。此外客户端的分位数只统计**成功**请求（本组错误率为 0，此项本阶段不影响结论）。
+
+**一个服务端 p99 大于客户端 p99 的阶段及其原因。** 本实验第 2、3 两行都是这种情况（19.9 > 12.47，19.9043 > 14.11）。服务端只是客户端链路中的一段，物理上不可能更慢，原因是**两者的分位数算法完全不同**（L-08 第 10 页）：
+- 客户端用**最近秩法**：把 2935 个成功请求排序后取第 ⌈99% × 2935⌉ = 第 2906 个的**真实耗时**，得到 14.11 ms。
+- 服务端用 `histogram_quantile(0.99, sum by (le) (rate(...)))`，在桶内做**线性插值**。本组直方图相邻桶上界为 0.01 与 0.02，跨度 2 倍，第 99 分位落在这个粗桶内，插值结果被推到接近桶上界 0.02 s，于是得到 19.9 ms。
+- 这并非服务端更慢，而是**直方图分辨率不足**。同一份数据里 `server_p99_ms` 在两次独立测量中都恰好是 19.9 / 19.9043，这一"稳定"正是被粗桶钉住的表现，而不是精度高的证明。
+- 相反，**平均值口径一致、可信**：11.48 与 10.8291 相差 0.65 ms，正好对应回环网络与客户端开销；服务端内部也是闭合的，`c + d` = 0.435219 + 10.3889 = 10.8241 ms，与 `server_mean_ms` = 10.8291 ms 仅差 0.005 ms。
+
+**服务端 `server_slo_good` 与客户端 `slo_good` 的比较。** 本实验两个有负载阶段两者都是 1（客户端 `slo_good`=1.0000，服务端 `server_slo_good`=1），**没有差异**，因为本组还没有过载阶段。预期差异只会在过载阶段出现：客户端的延迟只统计成功请求，超时（本组 loadgen 超时设为 2 s）与连接错误被计入 `error_rate` 而不进入延迟分布；服务端的 `server_slo_good` 分母是该 route 的**全部**请求速率、分子只含 `code="200"` 且落在 `le="0.05"` 桶内的请求，一旦出现 503 或慢请求，分子不增而分母增长，服务端 SLI 会明显下降。同时客户端看到的排队（内核队列、网络、Go 运行时等待）不在服务端计时范围内，所以过载时客户端感知的达标情况通常比服务端更差。
+
+**SLI 应在何处测量。** SLI 是"达标事件 ÷ 全部事件"（L-08 第 19 页），应以**用户能感知的位置**为准，即客户端或网关／负载均衡器一侧，而不是服务端处理函数内部。原因是服务端时序不包含内核排队、网络传输与请求进入处理函数前的运行时等待，越是接近饱和，这部分被隐藏的时间越多，服务端的 SLI 会系统性地高估用户体验。本组的 `slo_good`（客户端）与 `server_slo_good`（服务端）应当同时保留，用前者作为对外 SLI，用后者定位是"服务自己慢"还是"在排队"。
+
+⏳ **百分位数为什么不能平均（待 R1 数据补充）。** 正确做法是不能对分位数取算术平均，因为分位数不是线性可加量，它取决于样本数与分布形状；合并多个阶段时必须把所有样本放在一起重新取第 ⌈p% × N⌉ 个，或按样本数加权后重新计算，而不是求各阶段 p99 的均值。本组 `t1-light` 已经能看出这一点：第 2、3 行 `p99_ms` 为 12.47 与 14.11，算术平均 13.29；而 `all` 行实际是 **13.62**，两者相差 0.33 ms。同理也不能把客户端与服务端的 p99 取平均来"得到一个真实 p99"。R1 的 `steps.csv` 跑出来后按同一方法再核一遍。
+
+⏳ **错误预算（待 R1 数据补充）。** SLO 为"30 天内 99% 的读请求在 50 ms 内成功返回"，允许的错误率为 1%。燃烧率 = 实际错误率 ÷ 允许错误率；30 天预算耗尽时间 = 30 天 ÷ 燃烧率（L-08 第 21 页）。本组 `t1-light` 两个负载阶段的客户端 `slo_good` 都是 1.0000、客户端 `p99_ms` 为 12.47 与 14.11 ms，均远低于 50 ms，错误率为 0，燃烧率为 0，预算不消耗。R1 中第一个 `p99_ms` 超过 50 ms 的阶段出现后，用该阶段的实际未达标比例代入上式即可得到燃烧率与耗尽时间。
+
+**成立条件与局限。** (1) 以上比较都建立在**同一阶段**对齐的前提上，跨阶段、跨实例比较分位数没有意义。(2) 服务端 p99 的偏差方向取决于分位数落在哪个桶：本组分位数落在跨度为 2 倍的粗桶内因而显著偏高；若落在细桶（如 0.001→0.002）内偏差会小得多。(3) 本组错误率为 0，未实际检验"客户端只统计成功请求"造成的差异，该结论来自机制分析，需等过载阶段验证。(4) 全部测量在单机回环地址上完成，网络开销被低估，换成跨主机后客户端与服务端的差值会显著增大。(5) 服务端 `server_mean_ms` 不含内核排队与 Go 运行时等待，因此在 CPU 饱和阶段（任务 2 的 R2）服务端指标会明显低估用户感知的延迟。
 
 ## 7. 选做记录
 
