@@ -1,0 +1,28 @@
+名字: w2-group-fix
+开始: 2026-10-29T18:14:27+08:00
+主机: Linux 6.6.0-72.0.0.76.r1561_118.hce3.x86_64 x86_64
+CPU: 2 个逻辑核；General Purpose Processor
+内存: 3741 MiB，available 3166 MiB
+数据目录: data → /dev/vda2（ext4），统计的磁盘: vda
+enrolld: pid 32640，绑定的核 1
+loadgen: 绑定的核 0
+接口: /api/enroll；SLO 阈值 0.02s
+promsteps 变量: route=/api/enroll slo=0.02 cpus=1 disk=vda
+仓库提交: 6ee952f，未提交的改动 2 处
+压测命令: bin/loadgen '-url' 'http://127.0.0.1:8080/api/enroll' '-body' '{"student":"s{{seq}}","course":"c1"}' '-rates' '274,549,686,1029,1372,2058,2744'
+enrolld /config:
+{
+  "addr": "127.0.0.1:8080",
+  "work": 200000,
+  "pool": 4,
+  "db_ms": 10,
+  "pool_timeout": "1s",
+  "sync": "group",
+  "sync_interval": "1s",
+  "data": "data",
+  "go_version": "go1.26.9",
+  "gomaxprocs": 1,
+  "gogc": "",
+  "pid": 32640,
+  "started": "2026-10-29T18:13:42+08:00"
+}
