@@ -1,0 +1,28 @@
+名字: o3-read-overload-r2
+开始: 2026-10-30T01:20:15+08:00
+主机: Linux 6.6.0-72.0.0.76.r1561_118.hce3.x86_64 x86_64
+CPU: 2 个逻辑核；General Purpose Processor
+内存: 3741 MiB，available 3140 MiB
+数据目录: data → /dev/vda2（ext4），统计的磁盘: vda
+enrolld: pid 112824，绑定的核 1
+loadgen: 绑定的核 0
+接口: /api/courses/{id}；SLO 阈值 0.05s
+promsteps 变量: route=/api/courses/{id} slo=0.05 cpus=1 disk=vda
+仓库提交: 6470aad，未提交的改动 10 处
+压测命令: bin/loadgen '-url' 'http://127.0.0.1:8080/api/courses/1' '-rates' '424' '-step' '180s'
+enrolld /config:
+{
+  "addr": "127.0.0.1:8080",
+  "work": 200000,
+  "pool": 4,
+  "db_ms": 10,
+  "pool_timeout": "1s",
+  "sync": "each",
+  "sync_interval": "1s",
+  "data": "data",
+  "go_version": "go1.26.9",
+  "gomaxprocs": 1,
+  "gogc": "",
+  "pid": 112824,
+  "started": "2026-10-30T01:00:10+08:00"
+}

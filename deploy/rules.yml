@@ -1,0 +1,28 @@
+groups:
+  - name: lab2-read-slo
+    interval: 5s
+    rules:
+      - alert: Lab2ReadSLOBurnRateHigh
+        expr: |
+          (
+            (
+              1 -
+              (
+                (
+                  sum(rate(http_request_duration_seconds_bucket{job="enrolld",route="/api/courses/{id}",code="200",le="0.05"}[1m]))
+                  or vector(0)
+                )
+                /
+                sum(rate(http_requests_total{job="enrolld",route="/api/courses/{id}"}[1m]))
+              )
+            ) / 0.01 > 5
+          )
+          and
+          (
+            sum(rate(http_requests_total{job="enrolld",route="/api/courses/{id}"}[1m])) > 0
+          )
+        for: 30s
+        labels:
+          severity: warning
+        annotations:
+          summary: "Read SLO burn rate exceeds 5"

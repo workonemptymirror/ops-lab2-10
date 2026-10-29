@@ -1,0 +1,106 @@
+2026-10-30T01:20:08+08:00
+{"status":"success","data":{"alerts":[]}}
+2026-10-30T01:20:13+08:00
+{"status":"success","data":{"alerts":[]}}
+2026-10-30T01:20:18+08:00
+{"status":"success","data":{"alerts":[]}}
+2026-10-30T01:20:23+08:00
+{"status":"success","data":{"alerts":[{"labels":{"alertname":"Lab2ReadSLOBurnRateHigh","severity":"warning"},"annotations":{"summary":"Read SLO burn rate exceeds 5"},"state":"pending","activeAt":"2026-10-29T17:20:20.803929395Z","value":"8.149606299212599e+01"}]}}
+2026-10-30T01:20:28+08:00
+{"status":"success","data":{"alerts":[{"labels":{"alertname":"Lab2ReadSLOBurnRateHigh","severity":"warning"},"annotations":{"summary":"Read SLO burn rate exceeds 5"},"state":"pending","activeAt":"2026-10-29T17:20:20.803929395Z","value":"9.174956114686951e+01"}]}}
+2026-10-30T01:20:33+08:00
+{"status":"success","data":{"alerts":[{"labels":{"alertname":"Lab2ReadSLOBurnRateHigh","severity":"warning"},"annotations":{"summary":"Read SLO burn rate exceeds 5"},"state":"pending","activeAt":"2026-10-29T17:20:20.803929395Z","value":"9.487645348837209e+01"}]}}
+2026-10-30T01:20:38+08:00
+{"status":"success","data":{"alerts":[{"labels":{"alertname":"Lab2ReadSLOBurnRateHigh","severity":"warning"},"annotations":{"summary":"Read SLO burn rate exceeds 5"},"state":"pending","activeAt":"2026-10-29T17:20:20.803929395Z","value":"9.6336234896713e+01"}]}}
+2026-10-30T01:20:43+08:00
+{"status":"success","data":{"alerts":[{"labels":{"alertname":"Lab2ReadSLOBurnRateHigh","severity":"warning"},"annotations":{"summary":"Read SLO burn rate exceeds 5"},"state":"pending","activeAt":"2026-10-29T17:20:20.803929395Z","value":"9.710917478216298e+01"}]}}
+2026-10-30T01:20:48+08:00
+{"status":"success","data":{"alerts":[{"labels":{"alertname":"Lab2ReadSLOBurnRateHigh","severity":"warning"},"annotations":{"summary":"Read SLO burn rate exceeds 5"},"state":"pending","activeAt":"2026-10-29T17:20:20.803929395Z","value":"9.762105618356672e+01"}]}}
+2026-10-30T01:20:53+08:00
+{"status":"success","data":{"alerts":[{"labels":{"alertname":"Lab2ReadSLOBurnRateHigh","severity":"warning"},"annotations":{"summary":"Read SLO burn rate exceeds 5"},"state":"firing","activeAt":"2026-10-29T17:20:20.803929395Z","value":"9.799159604016808e+01"}]}}
+2026-10-30T01:20:58+08:00
+{"status":"success","data":{"alerts":[{"labels":{"alertname":"Lab2ReadSLOBurnRateHigh","severity":"warning"},"annotations":{"summary":"Read SLO burn rate exceeds 5"},"state":"firing","activeAt":"2026-10-29T17:20:20.803929395Z","value":"9.825473449684367e+01"}]}}
+2026-10-30T01:21:03+08:00
+{"status":"success","data":{"alerts":[{"labels":{"alertname":"Lab2ReadSLOBurnRateHigh","severity":"warning"},"annotations":{"summary":"Read SLO burn rate exceeds 5"},"state":"firing","activeAt":"2026-10-29T17:20:20.803929395Z","value":"9.84638849547881e+01"}]}}
+2026-10-30T01:21:08+08:00
+{"status":"success","data":{"alerts":[{"labels":{"alertname":"Lab2ReadSLOBurnRateHigh","severity":"warning"},"annotations":{"summary":"Read SLO burn rate exceeds 5"},"state":"firing","activeAt":"2026-10-29T17:20:20.803929395Z","value":"9.86290048130682e+01"}]}}
+2026-10-30T01:21:13+08:00
+{"status":"success","data":{"alerts":[{"labels":{"alertname":"Lab2ReadSLOBurnRateHigh","severity":"warning"},"annotations":{"summary":"Read SLO burn rate exceeds 5"},"state":"firing","activeAt":"2026-10-29T17:20:20.803929395Z","value":"9.875540647894783e+01"}]}}
+2026-10-30T01:21:18+08:00
+{"status":"success","data":{"alerts":[{"labels":{"alertname":"Lab2ReadSLOBurnRateHigh","severity":"warning"},"annotations":{"summary":"Read SLO burn rate exceeds 5"},"state":"firing","activeAt":"2026-10-29T17:20:20.803929395Z","value":"9.893990084243622e+01"}]}}
+2026-10-30T01:21:23+08:00
+{"status":"success","data":{"alerts":[{"labels":{"alertname":"Lab2ReadSLOBurnRateHigh","severity":"warning"},"annotations":{"summary":"Read SLO burn rate exceeds 5"},"state":"firing","activeAt":"2026-10-29T17:20:20.803929395Z","value":"1e+02"}]}}
+2026-10-30T01:21:28+08:00
+{"status":"success","data":{"alerts":[{"labels":{"alertname":"Lab2ReadSLOBurnRateHigh","severity":"warning"},"annotations":{"summary":"Read SLO burn rate exceeds 5"},"state":"firing","activeAt":"2026-10-29T17:20:20.803929395Z","value":"1e+02"}]}}
+2026-10-30T01:21:33+08:00
+{"status":"success","data":{"alerts":[{"labels":{"alertname":"Lab2ReadSLOBurnRateHigh","severity":"warning"},"annotations":{"summary":"Read SLO burn rate exceeds 5"},"state":"firing","activeAt":"2026-10-29T17:20:20.803929395Z","value":"1e+02"}]}}
+2026-10-30T01:21:38+08:00
+{"status":"success","data":{"alerts":[{"labels":{"alertname":"Lab2ReadSLOBurnRateHigh","severity":"warning"},"annotations":{"summary":"Read SLO burn rate exceeds 5"},"state":"firing","activeAt":"2026-10-29T17:20:20.803929395Z","value":"1e+02"}]}}
+2026-10-30T01:21:43+08:00
+{"status":"success","data":{"alerts":[{"labels":{"alertname":"Lab2ReadSLOBurnRateHigh","severity":"warning"},"annotations":{"summary":"Read SLO burn rate exceeds 5"},"state":"firing","activeAt":"2026-10-29T17:20:20.803929395Z","value":"1e+02"}]}}
+2026-10-30T01:21:48+08:00
+{"status":"success","data":{"alerts":[{"labels":{"alertname":"Lab2ReadSLOBurnRateHigh","severity":"warning"},"annotations":{"summary":"Read SLO burn rate exceeds 5"},"state":"firing","activeAt":"2026-10-29T17:20:20.803929395Z","value":"1e+02"}]}}
+2026-10-30T01:21:53+08:00
+{"status":"success","data":{"alerts":[{"labels":{"alertname":"Lab2ReadSLOBurnRateHigh","severity":"warning"},"annotations":{"summary":"Read SLO burn rate exceeds 5"},"state":"firing","activeAt":"2026-10-29T17:20:20.803929395Z","value":"1e+02"}]}}
+2026-10-30T01:21:58+08:00
+{"status":"success","data":{"alerts":[{"labels":{"alertname":"Lab2ReadSLOBurnRateHigh","severity":"warning"},"annotations":{"summary":"Read SLO burn rate exceeds 5"},"state":"firing","activeAt":"2026-10-29T17:20:20.803929395Z","value":"1e+02"}]}}
+2026-10-30T01:22:03+08:00
+{"status":"success","data":{"alerts":[{"labels":{"alertname":"Lab2ReadSLOBurnRateHigh","severity":"warning"},"annotations":{"summary":"Read SLO burn rate exceeds 5"},"state":"firing","activeAt":"2026-10-29T17:20:20.803929395Z","value":"1e+02"}]}}
+2026-10-30T01:22:08+08:00
+{"status":"success","data":{"alerts":[{"labels":{"alertname":"Lab2ReadSLOBurnRateHigh","severity":"warning"},"annotations":{"summary":"Read SLO burn rate exceeds 5"},"state":"firing","activeAt":"2026-10-29T17:20:20.803929395Z","value":"1e+02"}]}}
+2026-10-30T01:22:13+08:00
+{"status":"success","data":{"alerts":[{"labels":{"alertname":"Lab2ReadSLOBurnRateHigh","severity":"warning"},"annotations":{"summary":"Read SLO burn rate exceeds 5"},"state":"firing","activeAt":"2026-10-29T17:20:20.803929395Z","value":"1e+02"}]}}
+2026-10-30T01:22:18+08:00
+{"status":"success","data":{"alerts":[{"labels":{"alertname":"Lab2ReadSLOBurnRateHigh","severity":"warning"},"annotations":{"summary":"Read SLO burn rate exceeds 5"},"state":"firing","activeAt":"2026-10-29T17:20:20.803929395Z","value":"1e+02"}]}}
+2026-10-30T01:22:23+08:00
+{"status":"success","data":{"alerts":[{"labels":{"alertname":"Lab2ReadSLOBurnRateHigh","severity":"warning"},"annotations":{"summary":"Read SLO burn rate exceeds 5"},"state":"firing","activeAt":"2026-10-29T17:20:20.803929395Z","value":"1e+02"}]}}
+2026-10-30T01:22:28+08:00
+{"status":"success","data":{"alerts":[{"labels":{"alertname":"Lab2ReadSLOBurnRateHigh","severity":"warning"},"annotations":{"summary":"Read SLO burn rate exceeds 5"},"state":"firing","activeAt":"2026-10-29T17:20:20.803929395Z","value":"1e+02"}]}}
+2026-10-30T01:22:33+08:00
+{"status":"success","data":{"alerts":[{"labels":{"alertname":"Lab2ReadSLOBurnRateHigh","severity":"warning"},"annotations":{"summary":"Read SLO burn rate exceeds 5"},"state":"firing","activeAt":"2026-10-29T17:20:20.803929395Z","value":"1e+02"}]}}
+2026-10-30T01:22:38+08:00
+{"status":"success","data":{"alerts":[{"labels":{"alertname":"Lab2ReadSLOBurnRateHigh","severity":"warning"},"annotations":{"summary":"Read SLO burn rate exceeds 5"},"state":"firing","activeAt":"2026-10-29T17:20:20.803929395Z","value":"1e+02"}]}}
+2026-10-30T01:22:43+08:00
+{"status":"success","data":{"alerts":[{"labels":{"alertname":"Lab2ReadSLOBurnRateHigh","severity":"warning"},"annotations":{"summary":"Read SLO burn rate exceeds 5"},"state":"firing","activeAt":"2026-10-29T17:20:20.803929395Z","value":"1e+02"}]}}
+2026-10-30T01:22:48+08:00
+{"status":"success","data":{"alerts":[{"labels":{"alertname":"Lab2ReadSLOBurnRateHigh","severity":"warning"},"annotations":{"summary":"Read SLO burn rate exceeds 5"},"state":"firing","activeAt":"2026-10-29T17:20:20.803929395Z","value":"1e+02"}]}}
+2026-10-30T01:22:53+08:00
+{"status":"success","data":{"alerts":[{"labels":{"alertname":"Lab2ReadSLOBurnRateHigh","severity":"warning"},"annotations":{"summary":"Read SLO burn rate exceeds 5"},"state":"firing","activeAt":"2026-10-29T17:20:20.803929395Z","value":"1e+02"}]}}
+2026-10-30T01:22:58+08:00
+{"status":"success","data":{"alerts":[{"labels":{"alertname":"Lab2ReadSLOBurnRateHigh","severity":"warning"},"annotations":{"summary":"Read SLO burn rate exceeds 5"},"state":"firing","activeAt":"2026-10-29T17:20:20.803929395Z","value":"1e+02"}]}}
+2026-10-30T01:23:03+08:00
+{"status":"success","data":{"alerts":[{"labels":{"alertname":"Lab2ReadSLOBurnRateHigh","severity":"warning"},"annotations":{"summary":"Read SLO burn rate exceeds 5"},"state":"firing","activeAt":"2026-10-29T17:20:20.803929395Z","value":"1e+02"}]}}
+2026-10-30T01:23:08+08:00
+{"status":"success","data":{"alerts":[{"labels":{"alertname":"Lab2ReadSLOBurnRateHigh","severity":"warning"},"annotations":{"summary":"Read SLO burn rate exceeds 5"},"state":"firing","activeAt":"2026-10-29T17:20:20.803929395Z","value":"1e+02"}]}}
+2026-10-30T01:23:13+08:00
+{"status":"success","data":{"alerts":[{"labels":{"alertname":"Lab2ReadSLOBurnRateHigh","severity":"warning"},"annotations":{"summary":"Read SLO burn rate exceeds 5"},"state":"firing","activeAt":"2026-10-29T17:20:20.803929395Z","value":"1e+02"}]}}
+2026-10-30T01:23:18+08:00
+{"status":"success","data":{"alerts":[{"labels":{"alertname":"Lab2ReadSLOBurnRateHigh","severity":"warning"},"annotations":{"summary":"Read SLO burn rate exceeds 5"},"state":"firing","activeAt":"2026-10-29T17:20:20.803929395Z","value":"1e+02"}]}}
+2026-10-30T01:23:23+08:00
+{"status":"success","data":{"alerts":[{"labels":{"alertname":"Lab2ReadSLOBurnRateHigh","severity":"warning"},"annotations":{"summary":"Read SLO burn rate exceeds 5"},"state":"firing","activeAt":"2026-10-29T17:20:20.803929395Z","value":"1e+02"}]}}
+2026-10-30T01:23:28+08:00
+{"status":"success","data":{"alerts":[{"labels":{"alertname":"Lab2ReadSLOBurnRateHigh","severity":"warning"},"annotations":{"summary":"Read SLO burn rate exceeds 5"},"state":"firing","activeAt":"2026-10-29T17:20:20.803929395Z","value":"1e+02"}]}}
+2026-10-30T01:23:33+08:00
+{"status":"success","data":{"alerts":[{"labels":{"alertname":"Lab2ReadSLOBurnRateHigh","severity":"warning"},"annotations":{"summary":"Read SLO burn rate exceeds 5"},"state":"firing","activeAt":"2026-10-29T17:20:20.803929395Z","value":"1e+02"}]}}
+2026-10-30T01:23:38+08:00
+{"status":"success","data":{"alerts":[{"labels":{"alertname":"Lab2ReadSLOBurnRateHigh","severity":"warning"},"annotations":{"summary":"Read SLO burn rate exceeds 5"},"state":"firing","activeAt":"2026-10-29T17:20:20.803929395Z","value":"1e+02"}]}}
+2026-10-30T01:23:43+08:00
+{"status":"success","data":{"alerts":[{"labels":{"alertname":"Lab2ReadSLOBurnRateHigh","severity":"warning"},"annotations":{"summary":"Read SLO burn rate exceeds 5"},"state":"firing","activeAt":"2026-10-29T17:20:20.803929395Z","value":"1e+02"}]}}
+2026-10-30T01:23:48+08:00
+{"status":"success","data":{"alerts":[{"labels":{"alertname":"Lab2ReadSLOBurnRateHigh","severity":"warning"},"annotations":{"summary":"Read SLO burn rate exceeds 5"},"state":"firing","activeAt":"2026-10-29T17:20:20.803929395Z","value":"1e+02"}]}}
+2026-10-30T01:23:53+08:00
+{"status":"success","data":{"alerts":[{"labels":{"alertname":"Lab2ReadSLOBurnRateHigh","severity":"warning"},"annotations":{"summary":"Read SLO burn rate exceeds 5"},"state":"firing","activeAt":"2026-10-29T17:20:20.803929395Z","value":"1e+02"}]}}
+2026-10-30T01:23:58+08:00
+{"status":"success","data":{"alerts":[{"labels":{"alertname":"Lab2ReadSLOBurnRateHigh","severity":"warning"},"annotations":{"summary":"Read SLO burn rate exceeds 5"},"state":"firing","activeAt":"2026-10-29T17:20:20.803929395Z","value":"1e+02"}]}}
+2026-10-30T01:24:03+08:00
+{"status":"success","data":{"alerts":[{"labels":{"alertname":"Lab2ReadSLOBurnRateHigh","severity":"warning"},"annotations":{"summary":"Read SLO burn rate exceeds 5"},"state":"firing","activeAt":"2026-10-29T17:20:20.803929395Z","value":"1e+02"}]}}
+2026-10-30T01:24:08+08:00
+{"status":"success","data":{"alerts":[{"labels":{"alertname":"Lab2ReadSLOBurnRateHigh","severity":"warning"},"annotations":{"summary":"Read SLO burn rate exceeds 5"},"state":"firing","activeAt":"2026-10-29T17:20:20.803929395Z","value":"1e+02"}]}}
+2026-10-30T01:24:13+08:00
+{"status":"success","data":{"alerts":[{"labels":{"alertname":"Lab2ReadSLOBurnRateHigh","severity":"warning"},"annotations":{"summary":"Read SLO burn rate exceeds 5"},"state":"firing","activeAt":"2026-10-29T17:20:20.803929395Z","value":"1e+02"}]}}
+2026-10-30T01:24:18+08:00
+{"status":"success","data":{"alerts":[{"labels":{"alertname":"Lab2ReadSLOBurnRateHigh","severity":"warning"},"annotations":{"summary":"Read SLO burn rate exceeds 5"},"state":"firing","activeAt":"2026-10-29T17:20:20.803929395Z","value":"1e+02"}]}}
+2026-10-30T01:24:23+08:00
+{"status":"success","data":{"alerts":[]}}
+2026-10-30T01:24:28+08:00
+{"status":"success","data":{"alerts":[]}}

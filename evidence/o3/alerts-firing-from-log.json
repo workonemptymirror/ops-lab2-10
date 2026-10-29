@@ -1,0 +1,1 @@
+{"status":"success","data":{"alerts":[{"labels":{"alertname":"Lab2ReadSLOBurnRateHigh","severity":"warning"},"annotations":{"summary":"Read SLO burn rate exceeds 5"},"state":"firing","activeAt":"2026-10-29T17:20:20.803929395Z","value":"9.799159604016808e+01"}]}}

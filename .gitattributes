@@ -4,3 +4,11 @@ Makefile   text eol=lf
 *.go       text eol=lf
 *.yml      text eol=lf
 *.txt      text eol=lf
+
+# Preserve optional experiment evidence byte-for-byte across platforms.
+runs/o1-gogc100/** -text
+runs/o1-gogc400/** -text
+runs/o3-read-overload-r2/** -text
+evidence/o3/alerts-*.json -text
+evidence/o3/alerts-*.log -text
+evidence/o3/rules-loaded.json -text
